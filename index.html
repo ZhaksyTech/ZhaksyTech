@@ -1547,11 +1547,17 @@
                     return;
                 }
                 
-                let fullMessage = `<b>Новая заявка с сайта Zhaksytech!</b>\n\n<b>Имя:</b> ${name}\n<b>Контакт:</b> ${contact}\n\n`;
+                let fullMessage = `<b>🔔 Новая заявка с сайта Zhaksytech!</b>\n\n<b>👤 Имя:</b> ${name}\n<b>📞 Контакт:</b> ${contact}\n\n`;
                 if (tariffPlan) {
-                    fullMessage += `<b>Тарифный план:</b> ${tariffPlan}\n\n`;
+                    fullMessage += `<b>💰 Тарифный план:</b> ${tariffPlan}\n\n`;
                 }
-                fullMessage += `<b>Сообщение:</b>\n${message}`;
+                fullMessage += `<b>💬 Сообщение:</b>\n${message}\n\n`;
+
+                const now = new Date();
+                const time = `${('0' + now.getHours()).slice(-2)}:${('0' + now.getMinutes()).slice(-2)}:${('0' + now.getSeconds()).slice(-2)}`;
+                const date = `${('0' + now.getDate()).slice(-2)}.${('0' + (now.getMonth() + 1)).slice(-2)}.${now.getFullYear()}`;
+                
+                fullMessage += `<b>⏰ Время:</b> ${date}, ${time}`;
 
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 
@@ -1616,7 +1622,11 @@
                     return;
                 }
                 
-                const fullMessage = `<b>Новая заявка с сайта Zhaksytech!</b>\n\n<b>Имя:</b> ${name}\n<b>Контакт:</b> ${contact}\n\n<b>Сообщение:</b>\n${message}`;
+                const now = new Date();
+                const time = `${('0' + now.getHours()).slice(-2)}:${('0' + now.getMinutes()).slice(-2)}:${('0' + now.getSeconds()).slice(-2)}`;
+                const date = `${('0' + now.getDate()).slice(-2)}.${('0' + (now.getMonth() + 1)).slice(-2)}.${now.getFullYear()}`;
+                
+                const fullMessage = `<b>🔔 Новая заявка с сайта Zhaksytech!</b>\n\n<b>👤 Имя:</b> ${name}\n<b>📞 Контакт:</b> ${contact}\n\n<b>💬 Сообщение:</b>\n${message}\n\n<b>⏰ Время:</b> ${date}, ${time}`;
 
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 
